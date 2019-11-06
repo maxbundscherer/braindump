@@ -1,8 +1,12 @@
-[![docker pulls](https://img.shields.io/docker/pulls/jupyter/scipy-notebook.svg)](https://hub.docker.com/r/jupyter/scipy-notebook/) [![docker stars](https://img.shields.io/docker/stars/jupyter/scipy-notebook.svg)](https://hub.docker.com/r/jupyter/scipy-notebook/) [![image metadata](https://images.microbadger.com/badges/image/jupyter/scipy-notebook.svg)](https://microbadger.com/images/jupyter/scipy-notebook "jupyter/scipy-notebook image metadata")
+# Docker Jupyter Notebook Scientific Python Stack
 
-# Jupyter Notebook Scientific Python Stack
+https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook
 
-Please visit the documentation site for help using and contributing to this image and others.
+# Modified
 
-* [Jupyter Docker Stacks on ReadTheDocs](http://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
-* [Selecting an Image :: Core Stacks :: jupyter/scipy-notebook](http://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook)
+- Add pandas-datareader
+
+# Run with
+
+docker build -t cudocker:latest .
+docker run -p 8888:8888 --rm --name custom-pjupyter 61352a4924cc
