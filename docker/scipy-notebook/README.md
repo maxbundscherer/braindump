@@ -5,6 +5,7 @@ https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook
 # Modified
 
 - Add pandas-datareader
+- Add mpld3
 
 # Run with
 
