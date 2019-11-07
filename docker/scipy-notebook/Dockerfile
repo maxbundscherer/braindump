@@ -58,7 +58,9 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+# MB Stuff
 RUN conda install -c anaconda pandas-datareader
+RUN conda install -c conda-forge mpld3
 
 # Install facets which does not have a pip or conda package at the moment
 RUN cd /tmp && \
