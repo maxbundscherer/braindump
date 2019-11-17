@@ -4,7 +4,8 @@
 
 - ``pkill <process_name>``: Kills process by name
 - ``htop``: Shows activity monitor
-- ``df -h``: Shows free disk-space
+- ``df -h``: Shows free disk space (global)
+- ``du -sh Desktop``: Shows disk usage
 - ``free -m``: Shows free ram in mb (works not on mac)
 - ``ls -all -block-size=MB``: Shows ls with size in mb (works not on mac)
 - ``scp /localPath/file.txt user@hostname:/remotePath/file.txt``: Copy file from local host to ssh server
