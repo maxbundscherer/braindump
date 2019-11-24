@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html style="" class="js csstransforms3d sb-init sb-scroll-lock" lang="de"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Lokalen Webserver mit PHP unter macOS X einrichten | Sven's Digital Home</title>
+    <meta name="generator" content="GravCMS">
+<meta name="description" content="Sven's Digital Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="https://www.paass.net/user/themes/antimatter/images/favicon.png">
+    <link rel="canonical" href="https://www.paass.net/lokalen-webserver-mit-php-unter-macos-x-einrichten">
+
+                                                    
+                    
+                                        
+            <link href="installMacOsApachePhp-Dateien/grids-min.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/nucleus.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/template.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/custom.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/font-awesome.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/notices.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/form-styles.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/simplesearch.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/default.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/photoswipe.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/default-skin.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/login.css" type="text/css" rel="stylesheet">
+<link href="installMacOsApachePhp-Dateien/slidebars.css" type="text/css" rel="stylesheet">
+
+        <script type="text/javascript" async="" src="installMacOsApachePhp-Dateien/recaptcha__de.js"></script><script src="installMacOsApachePhp-Dateien/jquery-2.js"></script><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+<script src="installMacOsApachePhp-Dateien/modernizr.js"></script>
+<script src="installMacOsApachePhp-Dateien/highlight.js"></script>
+<script src="installMacOsApachePhp-Dateien/photoswipe.js"></script>
+<script src="installMacOsApachePhp-Dateien/photoswipe-ui-default.js"></script>
+<script src="installMacOsApachePhp-Dateien/activate.js"></script>
+<script src="installMacOsApachePhp-Dateien/antimatter.js"></script>
+<script src="installMacOsApachePhp-Dateien/slidebars.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+</script>
+
+    
+<link href="installMacOsApachePhp-Dateien/css.css" rel="stylesheet"></head><span id="warning-container"><i data-reactroot=""></i></span>
+<body id="top" class="">
+    <div id="sb-site" style="min-height: 909px;">
+                <header id="header" class="scrolled">
+            <div id="logo">
+                <h3><a href="https://www.paass.net/">Sven's Digital Home</a></h3>
+            </div>
+            <div id="navbar">
+                                                                
+<ul class="navigation">
+                                            <li class="active">
+                <a href="https://www.paass.net/">
+                                        Home
+                </a>
+            </li>
+                                        <li class="">
+                <a href="https://www.paass.net/about">
+                                        Über mich
+                </a>
+            </li>
+            
+            </ul>
+
+                                <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
+            </div>
+        </header>
+        
+        
+                <section id="body" class="">
+            				
+		<div class="blog-content-item grid pure-g-r">
+			<div id="item" class="block pure-u-2-3 h-entry">
+			    <div class="list-item h-entry">
+
+                
+    <div class="list-blog-header">
+        <span class="list-blog-date">
+            <time class="dt-published" datetime="2018-01-06T11:27:00+01:00">
+                <span>06</span>
+                <em>Jan</em>
+            </time>
+        </span>
+                    <h4 class="p-name"><a href="https://www.paass.net/lokalen-webserver-mit-php-unter-macos-x-einrichten" class="u-url">Lokalen Webserver mit PHP unter macOS X einrichten</a></h4>
+        
+                <span class="tags">
+                        <a href="https://www.paass.net/tag:macos" class="p-category">macos</a>
+                        <a href="https://www.paass.net/tag:apache" class="p-category">apache</a>
+                        <a href="https://www.paass.net/tag:php" class="p-category">php</a>
+                    </span>
+                                                                    <img alt="" src="installMacOsApachePhp-Dateien/c064f394fb56176817e3a90036b60ac92004d91b-apache-php.png">
+        
+    </div>
+
+    <div class="list-blog-padding">
+
+            <div class="e-content">
+            <p>Um einen Webserver mit PHP unter macOS laufen zu lassen 
+benötigt man kein extra Paket mehr, da sowohl der Webserver, als auch 
+PHP in macOS vorhanden sind.</p>
+<p>Bei macOS High Sierra (10.13.2) wird der Apache Webserver in der Version 2.4.28 und PHP in der Version 7.1.7 mitgeliefert.</p>
+<p>Also richten wir uns eine lokale Umgebung ein, die das Verzeichnis <strong>Sites</strong> im Verzeichnis unseres Hauptbenutzers freigibt.</p>
+
+<h3>Apache Webserver aktivieren</h3>
+<p>Man öffnet das <strong>Terminal</strong> und startet den Webserver mit folgendem Befehl.</p>
+<pre><code class="hljs sql">sudo apachectl <span class="hljs-keyword">start</span></code></pre>
+<p>Jetzt kann man im Browser seiner Wahl prüfen, ob der Webserver funktioniert, indem man <strong>localhost</strong> als Adresse eingibt.</p>
+<p><img alt="Apache running" src="installMacOsApachePhp-Dateien/apache-running.png"></p>
+<h3>PHP aktivieren</h3>
+<p>Um PHP zu aktiviern, muss die apache-Konfiguration angepasst werden. Dazu muss die Datei <strong>/etc/apache2/httpd.conf</strong> angepasst werden.</p>
+<ul>
+<li>Man öffnet das Terminal</li>
+<li>Mit dem Befehl <strong>sudo nano /etc/apache2/httpd.conf</strong> wird die Datei im Editor als Systemadministrator geöffnet.</li>
+<li>Die Tastenkombination <strong>Ctrl</strong> + <strong>W</strong> dient zur Suche im nano Editor.</li>
+<li>Man sucht nach <strong>php</strong> und der Editor springt zu folgender Zeile:</li>
+</ul>
+<pre><code class="hljs apache"><span class="hljs-comment">#LoadModule php7_module libexec/apache2/libphp7.so</span></code></pre>
+<ul>
+<li>Das PHP Modul muss aktiviert werden, indem das <strong>#</strong> am Anfang der Zeile entfernt wird.</li>
+<li>Möchte man auch andere Module aktivieren, funktioniert das nach dem gleichen Prinzip. Ich empfehle noch das <strong>rewrite_module</strong>, da es von vielen CMS Systemen verwendet wird, um die URLs umzuschreiben.</li>
+<li>Mittels <strong>Ctrl</strong> + <strong>O</strong> wird die Datei gespeichert und der Editor mit <strong>Ctrl</strong> + <strong>X</strong> beendet.</li>
+</ul>
+<p>Nach einem Neustart des Webservers mittels <strong>sudo apachectl restart</strong> ist php aktiviert.</p>
+<h3>Webseiten Verzeichnis erstellen</h3>
+<p>Im Finder öffnet man das Benutzerverzeichnis (Im Menü unter <strong>Gehe zu &gt; Benutzerordner</strong> bzw. mit der Tastenkombination <strong>⇧ + ⌘ + H</strong>).</p>
+<p><img alt="Site Directory" class="float-left" src="installMacOsApachePhp-Dateien/6a21629711807b2a21c940be909a078c19c53cfe-sites-directory.png">Dort erstellt man einen Ordner mit dem Namen <strong>Sites</strong>. Dieser Ordner erhält automatisch das Safari Logo.</p>
+<p>Zum testen wird eine Datei <strong>index.php</strong> mit folgendem Inhalt in dem Ordner erstellt.</p>
+<h5>index.php:</h5>
+<pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> phpinfo(); <span class="hljs-meta">?&gt;</span></span></code></pre>
+<p>Damit dieser Ordner automatisch verwendet wird, editiert man erneut die Apache-Konfiguration wie oben beschrieben im Terminal.</p>
+<p>Man such nach <strong>DocumentRoot</strong> und ändert die folgenden beiden Zeilen </p>
+<pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">"/Library/WebServer/Documents"</span>
+<span class="hljs-section">&lt;Directory "/Library/WebServer/Documents"&gt;</span></code></pre>
+<p>in </p>
+<pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">"/Users/svenpaass/Sites"</span>
+<span class="hljs-section">&lt;Directory "/Users/svenpaass/Sites"&gt;</span></code></pre>
+<p>wobei natürlich der eigene Benutzername verwendet wird. </p>
+<h3>Apache Benutzer ändern</h3>
+<p>Damit es keine Probleme mit Berechtigungen gibt, kann man den Apache 
+Webserver unter der eigenen User-Kennung laufen lassen. Damit laufen 
+auch die PHP Skripte mit der eigenen Kennung. </p>
+<p>Auf einer lokalen Maschine, die von einer Person verwendet wird, ist 
+das kein großes Problem. Produktiv würde ich allerdings mit <strong>suexec</strong> und <strong>fcgi</strong> arbeiten, damit php einen anderen Benutzer verwendet als der Webserver.</p>
+<h4>/etc/apache2/httpd.conf:</h4>
+<pre><code class="hljs nginx"><span class="hljs-attribute">User</span> svenpaass
+Group staff</code></pre>
+<h3>.htaccess Dateien erlauben</h3>
+<p>Damit evtl. vorhandene <strong>.htaccess</strong> Dateien ausgewertet werden, sucht man unter dem <strong>Directory</strong> Eintrag die Zeile <strong>AllowOverride None</strong> und ändert sie in <strong>AllowOverride All</strong>.</p>
+<p>Nach dem Neustart des Webservers sind die Änderungen aktiv und man bekommt die PHP Informationsseite angezeigt, wenn man <strong>http://localhost</strong> aufruft.</p>
+<p><img alt="PHP Information Page" src="installMacOsApachePhp-Dateien/php-info.png"></p>
+<p>Der Webserver wird beim Neustart automatisch gestartet.</p>
+<p>Ich verwende den Webserver um eine lokale Version meiner Webseite inkl. Blog zu betreiben.
+Warum? Die verwendete Blog-Software <a href="https://getgrav.org/">GRAV</a>
+ basiert auf Markdown-Dateien. Diese werden in einem git-Repository 
+versioniert. Sobald ich die Änderungen in mein privates 
+gitlab-Repository pushe, werden die Änderungen mittels des Grav <strong>git-sync</strong> Plugins automatisch live geschaltet.</p>
+        </div>
+
+                        
+    <h3>Kommentar hinzufügen</h3>
+
+    <form name="comments" action="/lokalen-webserver-mit-php-unter-macos-x-einrichten" method="POST">
+
+                                                            <div>
+                    
+
+        
+        
+    
+
+
+
+    <div class="form-field     ">
+                                    <div class="form-label ">
+                                        <label class="inline ">
+                                                                                                        Name
+                                                    
+                        <span class="required">*</span>
+                                        </label>
+                </div>
+                        <div class="form-data " data-grav-field="text" data-grav-disabled="" data-grav-default="null">
+                                                            <div class="form-input-wrapper  ">
+                                                        <input name="data[name]" type="text" class="  " placeholder="Namen eingeben" autocomplete="on">
+                                                                                    </div>
+                    
+                                
+            </div>
+            </div>
+
+                </div>
+                                                                        <div>
+                    
+
+        
+        
+    
+
+
+
+    <div class="form-field     ">
+                                    <div class="form-label ">
+                                        <label class="inline ">
+                                                                                                        Email
+                                                    
+                        <span class="required">*</span>
+                                        </label>
+                </div>
+                        <div class="form-data " data-grav-field="email" data-grav-disabled="" data-grav-default="null">
+                                                            <div class="form-input-wrapper  ">
+                                                        <input name="data[email]" type="email" class="  " placeholder="Email-Adresse eingeben">
+                                                                                </div>
+                                                    
+            </div>
+            </div>
+
+                </div>
+                                                                        <div>
+                    
+
+        
+        
+    
+
+
+
+    <div class="form-field     ">
+                                    <div class="form-label ">
+                                        <label class="inline ">
+                                                                                                        Kommentar
+                                                    
+                        <span class="required">*</span>
+                                        </label>
+                </div>
+                        <div class="form-data " data-grav-field="textarea" data-grav-disabled="" data-grav-default="null">
+                                        <div class="form-textarea-wrapper  ">
+                <textarea name="data[text]" class="  " placeholder="Kommentar eingeben"></textarea>
+                            </div>
+                                
+            </div>
+            </div>
+
+                </div>
+                                                                        <div>
+                    
+
+        
+        
+    
+
+
+
+
+
+<input data-grav-field="hidden" data-grav-disabled="false" type="hidden" class="input" name="data[date]" value="">
+
+                </div>
+                                                                                                    <div>
+                    
+
+        
+        
+    
+
+
+
+
+
+<input data-grav-field="hidden" data-grav-disabled="false" type="hidden" class="input" name="data[title]" value="Lokalen Webserver mit PHP unter macOS X einrichten">
+
+                </div>
+                                                                                                    <div>
+                    
+
+        
+        
+    
+
+
+
+
+
+<input data-grav-field="hidden" data-grav-disabled="false" type="hidden" class="input" name="data[lang]" value="de">
+
+                </div>
+                                                                                                    <div>
+                    
+
+        
+        
+    
+
+
+
+
+
+<input data-grav-field="hidden" data-grav-disabled="false" type="hidden" class="input" name="data[path]" value="/lokalen-webserver-mit-php-unter-macos-x-einrichten">
+
+                </div>
+                                                                        <div>
+                    
+
+        
+        
+    
+
+
+
+    <div class="form-field     ">
+                                    <div class="form-label ">
+                                        <label class="inline ">
+                                        </label>
+                </div>
+                        <div class="form-data " data-grav-field="captcha" data-grav-disabled="" data-grav-default="null">
+                                          <script>
+        var captchaOnloadCallback_comments = function captchaOnloadCallback_comments() {
+            grecaptcha.render('g-recaptcha-comments', {
+                'sitekey': "6LeWfS0UAAAAALDONxqZm9aMOKxhgtfVDRHfiat5",
+                'callback': captchaValidatedCallback_comments,
+                'expired-callback': captchaExpiredCallback_comments
+            });
+        };
+
+        var captchaValidatedCallback_comments = function captchaValidatedCallback_comments() {};
+        var captchaExpiredCallback_comments = function captchaExpiredCallback_comments() {
+            grecaptcha.reset();
+        };
+    </script>
+    <script src="installMacOsApachePhp-Dateien/api.js" async="" defer="defer"></script>
+    <div class="g-recaptcha" id="g-recaptcha-comments"><div style="width: 304px; height: 78px;"><div><iframe src="installMacOsApachePhp-Dateien/anchor.html" role="presentation" name="a-gui3t64wots" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" width="304" height="78" frameborder="0"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+                                  
+            </div>
+            </div>
+
+                </div>
+                            
+
+        
+        
+    
+
+
+
+<input type="hidden" name="__form-name__" value="comments">
+
+
+        <div class="buttons">
+                    <button class="button" type="submit">Absenden</button>
+                </div>
+
+        <input type="hidden" name="form-nonce" value="b8014f025f2b160ce9afca880df2f5cb">
+    </form>
+
+    <div class="alert">Vielen Dank für den Kommentar!</div>
+
+    
+        <h3>Kommentare</h3>
+
+        <table>
+                        <tbody><tr>
+                <td>
+                    Danke - gute Arbeit!
+                    <br>
+                    geschrieben am Sun, 24 Nov 2019 19:59:59 von Maximilian Bundscherer
+                </td>
+            </tr>
+                        <tr>
+                <td>
+                    Hallo Sven, danke für diese Anleitung. Sie hat mir 
+gerade unter Mojave sehr geholfen!! Das war in 3 Minuten erledigt.
+                    <br>
+                    geschrieben am Fri, 28 Jun 2019 08:20:21 von JoPhi
+                </td>
+            </tr>
+                        <tr>
+                <td>
+                    Hallo! Tolles Beispiel :) Kann man damit auch MySQL Datenbanken lokal laufen lassen bzw. einbinden?
+                    <br>
+                    geschrieben am Thu, 09 May 2019 09:51:53 von Joachim
+                </td>
+            </tr>
+                        <tr>
+                <td>
+                    Perfekte Anleitung, herzlichen Dank dafür! Wenn ich 
+diese Seite vorher gefunden hätte, dann wäre mir ein ganzer Tag 
+"Rumgefrikkel" mit XAMPP etc. erspart geblieben.
+                    <br>
+                    geschrieben am Tue, 05 Feb 2019 11:50:58 von Guenther
+                </td>
+            </tr>
+                        <tr>
+                <td>
+                    Ich habe vergessen hinzuzufügen, das nach der 
+Änderung der Apache Konfiguration der Webserver neu gestartet werden 
+muss. Dazu führt man "sudo apachectl restart" aus.
+                    <br>
+                    geschrieben am Thu, 24 Jan 2019 07:13:18 von Sven Paaß
+                </td>
+            </tr>
+                        <tr>
+                <td>
+                    Hallo. Ich habe die Anleitung bis einschließlich 
+"DocumentRoot" umgesetzt. Doch wenn ich localhost aufrufe erscheint "It 
+works!".
+Können Sie mir hier weiterhelfen?
+                    <br>
+                    geschrieben am Wed, 23 Jan 2019 21:01:34 von Thomas
+                </td>
+            </tr>
+                    </tbody></table>
+            
+            
+    
+        <p class="prev-next">
+                            <a class="button" href="https://www.paass.net/c64-from-scratch-teil-1"><i class="fa fa-chevron-left"></i> Nächster Beitrag</a>
+            
+                            <a class="button" href="https://www.paass.net/entwicklungsumgebung-fuer-moderne-webprojekte-teil-5">Vorheriger Beitrag <i class="fa fa-chevron-right"></i></a>
+                    </p>
+    
+    </div>
+</div>
+			</div>
+			<div id="sidebar" class="block size-1-3 pure-u-1-3">
+				
+<div class="sidebar-content">
+    <h4>Suchen</h4>
+    <div class="search-wrapper">
+    <form name="search" data-simplesearch-form="">
+        <input name="searchfield" class="search-input" type="text" min="3" required="" placeholder="Suche …" data-search-invalid="Bitte geben Sie mindestens 3 Zeichen ein" data-search-separator=":" data-search-input="/search/query">
+                    <button type="submit" class="search-submit">
+                <img src="installMacOsApachePhp-Dateien/search.svg">
+            </button>
+            </form>
+</div>
+</div>
+<!--
+<div class="sidebar-content">
+	<h4>Text Widget Beispiel</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+</div>
+-->
+<div class="sidebar-content">
+    <h4>Häufigste Tags</h4>
+    
+<span class="tags">
+                    <a class="" href="https://www.paass.net/tag:programming">programming</a>
+                    <a class="" href="https://www.paass.net/tag:javascript">javascript</a>
+                    <a class="" href="https://www.paass.net/tag:linux">linux</a>
+                    <a class="" href="https://www.paass.net/tag:c64">c64</a>
+                    <a class="" href="https://www.paass.net/tag:emulator">emulator</a>
+                    <a class="" href="https://www.paass.net/tag:printer">printer</a>
+                    <a class="" href="https://www.paass.net/tag:3d">3d</a>
+                    <a class="" href="https://www.paass.net/tag:ubuntu">ubuntu</a>
+                    <a class="" href="https://www.paass.net/tag:typescript">typescript</a>
+                    <a class="" href="https://www.paass.net/tag:macos">macos</a>
+                    <a class="" href="https://www.paass.net/tag:webpack">webpack</a>
+                    <a class="" href="https://www.paass.net/tag:babel">babel</a>
+                    <a class="" href="https://www.paass.net/tag:vmware">vmware</a>
+                    <a class="" href="https://www.paass.net/tag:firmware">firmware</a>
+                    <a class="" href="https://www.paass.net/tag:marlin">marlin</a>
+                    <a class="" href="https://www.paass.net/tag:altera">altera</a>
+                    <a class="" href="https://www.paass.net/tag:raspberry">raspberry</a>
+                    <a class="" href="https://www.paass.net/tag:octoprint">octoprint</a>
+                    <a class="" href="https://www.paass.net/tag:retro">retro</a>
+                    <a class="" href="https://www.paass.net/tag:commodore">commodore</a>
+                    <a class="" href="https://www.paass.net/tag:amiga">amiga</a>
+                    <a class="" href="https://www.paass.net/tag:virtualbox">virtualbox</a>
+                    <a class="" href="https://www.paass.net/tag:fpga">fpga</a>
+                    <a class="" href="https://www.paass.net/tag:open-vm-tools">open-vm-tools</a>
+                    <a class="" href="https://www.paass.net/tag:diving">diving</a>
+                    <a class="" href="https://www.paass.net/tag:photography">photography</a>
+                    <a class="" href="https://www.paass.net/tag:real_life">real_life</a>
+                    <a class="" href="https://www.paass.net/tag:java">java</a>
+                    <a class="" href="https://www.paass.net/tag:holiday">holiday</a>
+                    <a class="" href="https://www.paass.net/tag:vagrant">vagrant</a>
+                    <a class="" href="https://www.paass.net/tag:apache">apache</a>
+                    <a class="" href="https://www.paass.net/tag:xrdp">xrdp</a>
+                    <a class="" href="https://www.paass.net/tag:rdp-server">rdp-server</a>
+                    <a class="" href="https://www.paass.net/tag:php">php</a>
+                    <a class="" href="https://www.paass.net/tag:chai">chai</a>
+                    <a class="" href="https://www.paass.net/tag:mocha">mocha</a>
+                    <a class="" href="https://www.paass.net/tag:rootfs">rootfs</a>
+                    <a class="" href="https://www.paass.net/tag:arm">arm</a>
+                    <a class="" href="https://www.paass.net/tag:sql-server">sql-server</a>
+                    <a class="" href="https://www.paass.net/tag:microsoft">microsoft</a>
+                    <a class="" href="https://www.paass.net/tag:chef">chef</a>
+    </span>
+</div>
+<div class="sidebar-content">
+    <h4>Archiv</h4>
+	<ul class="archives">
+
+    <li>
+    	<a href="https://www.paass.net/archiv:nov_2019">
+                <span class="label">1</span>
+                <span class="archive_date">November 2019 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:aug_2019">
+                <span class="label">6</span>
+                <span class="archive_date">August 2019 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:may_2019">
+                <span class="label">2</span>
+                <span class="archive_date">May 2019 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:aug_2018">
+                <span class="label">2</span>
+                <span class="archive_date">August 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:jul_2018">
+                <span class="label">4</span>
+                <span class="archive_date">July 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:jun_2018">
+                <span class="label">2</span>
+                <span class="archive_date">June 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:may_2018">
+                <span class="label">1</span>
+                <span class="archive_date">May 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:apr_2018">
+                <span class="label">1</span>
+                <span class="archive_date">April 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:feb_2018">
+                <span class="label">1</span>
+                <span class="archive_date">February 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:jan_2018">
+                <span class="label">14</span>
+                <span class="archive_date">January 2018 </span>
+        </a>
+    </li>
+    <li>
+    	<a href="https://www.paass.net/archiv:oct_2017">
+                <span class="label">1</span>
+                <span class="archive_date">October 2017 </span>
+        </a>
+    </li>
+</ul>
+</div>
+<div class="sidebar-content syndicate">
+    <h4>Abonnements</h4>
+    <a class="button" href="https://www.paass.net/home.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
+    <a class="button" href="https://www.paass.net/home.rss"><i class="fa fa-rss-square"></i> RSS</a>
+</div>
+			</div>
+		</div>
+	        </section>
+        
+                <footer id="footer">
+            <div class="totop">
+                <span><a href="#" id="toTop"><i class="fa fa-arrow-up"></i></a></span>
+            </div>
+            <p><a href="http://getgrav.org/">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://www.rockettheme.com/">RocketTheme</a>.</p>
+        </footer>
+            </div>
+            <div class="sb-slidebar sb-left sb-width-thin">
+            <div id="panel">
+            
+<ul class="navigation">
+                                            <li class="active">
+                <a href="https://www.paass.net/">
+                                        Home
+                </a>
+            </li>
+                                        <li class="">
+                <a href="https://www.paass.net/about">
+                                        Über mich
+                </a>
+            </li>
+            
+            </ul>
+
+            </div>
+        </div>
+                 <script>
+        $(function () {
+            $(document).ready(function() {
+              $.slidebars({
+                hideControlClasses: true,
+                scrollLock: true
+              });
+            });
+        });
+        </script>
+        <script src="installMacOsApachePhp-Dateien/simplesearch.js"></script>
+<script src="installMacOsApachePhp-Dateien/analytics.js" async=""></script>
+<script>
+window.GoogleAnalyticsObject = 'ga';
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-111945142-1', 'auto');
+ga('set', 'forceSSL', true);
+ga('send', 'pageview');
+</script>
+
+    
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+</div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;" class="g-recaptcha-bubble-arrow"></div><div style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;" class="g-recaptcha-bubble-arrow"></div><div style="z-index: 2000000000; position: relative;"><iframe title="reCAPTCHA-Aufgabe" src="installMacOsApachePhp-Dateien/bframe.html" style="width: 100%; height: 100%;" name="c-gui3t64wots" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" frameborder="0"></iframe></div></div></body></html>
