@@ -15,3 +15,15 @@
 
 - ``docker build -t <image_tag>:latest .``: Build local Dockerfile to image with custom tag
 - ``docker run --rm --name <container_name> <image_tag>``: Run container with custom name from image and remove it after termination
+
+## SSH set passphrase
+
+- ``ssh-keygen -p``
+
+## SSH without Password
+
+(on client)
+
+- ``ssh-keygen``: Generates private and public cert
+- ``ssh-copy-id userid@hostname`` Share public cert with server
+- ``ssh userid@hostname``: Login to server without pw
