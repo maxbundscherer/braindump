@@ -2,10 +2,9 @@
 
 https://github.com/jiwidi/jupyter-lab-docker-rpi
 
-# Modified
+## Modified
 
-
-# Run with
+## Run with
 
 - ``docker build -t rpidockermb:latest .``
 - ``docker run -p 8886:8888 -v ~/Documents/Sync/ml-pjupyter-stuff/src:/root/test --name rpidockermb rpidockermb``
