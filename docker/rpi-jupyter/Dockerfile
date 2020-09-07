@@ -16,7 +16,10 @@ RUN apt-get install -y build-essential
 RUN pip3 install --upgrade pip
 RUN pip3 install cython
 RUN pip3 install readline ipywidgets jupyter jupyterlab
+RUN pip3 install conda
 
+RUN conda install --quiet --yes \
+    'matplotlib-base=3.1.*'
 
 # Configure jupyter
 RUN jupyter nbextension enable --py widgetsnbextension
