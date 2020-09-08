@@ -13,10 +13,14 @@ RUN apt-get install -y python-dev --fix-missing
 RUN apt-get install -y patch
 RUN apt-get install -y build-essential
 
+
 RUN pip3 install --upgrade pip
+RUN pip3 install -U setuptools
+
 RUN pip3 install cython
 RUN pip3 install readline ipywidgets jupyter jupyterlab
 RUN pip3 install conda
+
 
 RUN conda install --quiet --yes \
     'matplotlib-base=3.1.*'

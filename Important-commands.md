@@ -27,3 +27,24 @@
 - ``ssh-keygen``: Generates private and public cert
 - ``ssh-copy-id userid@hostname`` Share public cert with server
 - ``ssh userid@hostname``: Login to server without pw
+
+## Do for each file in dir
+
+```
+for file in mb_input/*
+do
+filename=${file#*/}
+
+    echo "Proc now"
+    echo $filename
+
+    printAns=`./darknet detect cfg/yolov3.cfg yolov3.weights mb_input/$filename`
+
+    cp predictions.jpg mb_output/$filename
+    convert mb_output/$filename -background Khaki -pointsize 20 label:"$printAns" -gravity Center -append mb_output/$filename
+
+    echo $printAns >> result.csv
+    echo $printAns
+
+done
+```
