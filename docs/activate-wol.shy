@@ -1,0 +1,21 @@
+sudo apt-get install ethtool
+
+(check eth0 with ip link AND sudo ethtool eth0)
+
+sudo ethtool -s eth0 wol g
+
+----
+
+ Seit Ubuntu 18.04 funktioniert die weiter unten beschriebene Methode 3 mit /etc/rc.local nicht mehr. Stattdessen kann ein systemd-Service erstellt werden.
+
+Mit Erstellung einer Konfigurationsdatei /etc/systemd/system/wol.service lässt sich Wake-On-LAN aktivieren. Man trägt mit einem Editor mit Root-Rechten [4] die Zeilen:
+
+[Unit]
+Description=Configure Wake-up on LAN
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ethtool -s eth0 wol g
+
+[Install]
+WantedBy=basic.target
