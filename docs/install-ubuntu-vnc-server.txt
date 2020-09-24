@@ -1,0 +1,15 @@
+sudo apt install xfce4 xfce4-goodies
+
+sudo apt install tightvncserver
+
+vncserver
+
+(setzte pw - vorsicht auf 8 zeichen reduziert)
+
+# Debug
+
+cd ~/.vnc/
+
+- beenden mit vncserver -kill :1
+- starten mit vncserver -localhost
+- pw ändern mit vncpasswd
