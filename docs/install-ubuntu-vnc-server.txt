@@ -1,0 +1,29 @@
+#sudo apt-get install x11vnc 
+
+sudo apt-get install x11vnc 
+
+# KENNWORT SETZTEN MIT
+sudo x11vnc -storepasswd KENNWORT /etc/x11vnc.pass 
+
+# Datei erstellen
+
+/etc/systemd/system/x11vnc.service
+
+```
+[Unit]
+Description=x11vnc-Server
+
+[Service]
+ExecStart=/usr/bin/x11vnc -auth guess -forever -localhost -loop -noxdamage -o /var/log/x11vnc.log -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared
+
+[Install]
+WantedBy=multi-user.target
+```
+
+# SystemD konfi
+
+systemctl enable x11vnc.service
+systemctl is-enabled x11vnc.service
+
+# Logs unter
+cat /cat /var/log/x11vnc.log
