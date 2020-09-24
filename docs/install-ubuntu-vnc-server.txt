@@ -1,3 +1,5 @@
+#https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04-de
+
 sudo apt install xfce4 xfce4-goodies
 
 sudo apt install tightvncserver
