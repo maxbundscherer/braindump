@@ -28,6 +28,13 @@
 - ``ssh-copy-id userid@hostname`` Share public cert with server
 - ``ssh userid@hostname``: Login to server without pw
 
+## Mount/Unmount ubuntu
+
+- ``mount | grep mnt``: Check already mounted
+- ``sudo lsblk``: Get disks for mount
+- ``sudo mount /dev/sdd2 /mnt/mountExt``: Mount (create dir before)
+- ``sudo umount /dev/sdd2``: tbd
+
 ## Do for each file in dir
 
 ```
