@@ -28,4 +28,4 @@ sleep 15
 echo "-Start COPY NOW-"
 
 rm rSyncSuc.log rSyncErr.log
-sudo rsync -r -l -h --progress --stats $fromPath $toPath 1> rSyncSuc.log 2> rSyncErr.log
+sudo rsync -r -l -h --progress --stats $fromPath $toPath 1> rSyncSuc.log 2> rSyncErr.log &
