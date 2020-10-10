@@ -2,15 +2,15 @@ echo
 echo "----- Init FROM PATH (without / at end) -----"
 echo $1
 ls -all $1
-echo "Memory:"
-du -sh $1
+#echo "Memory:"
+#du -sh $1
 
 echo
 echo "----- Init FROM PATH (without / at end) -----"
 echo $2
 ls -all $2
-echo "Memory:"
-du -sh $2
+#echo "Memory:"
+#du -sh $2
 
 echo
 echo "----- Processed path -----"
@@ -27,4 +27,5 @@ sleep 15
 
 echo "-Start COPY NOW-"
 
-sudo rsync -r -l -q -h --progress --stats $fromPath $toPath
+rm rSyncSuc.log rSyncErr.log
+sudo rsync -r -l -h --progress --stats $fromPath $toPath 1> rSyncSuc.log 2> rSyncErr.log
