@@ -20,6 +20,7 @@ echo "From Path (with / at end): '${fromPath}'"
 echo "To Path (with / at end): '${toPath}'"
 
 echo
+echo "Please start script with sudo!!!"
 echo "PLEASE WAIT 15 s"
 sleep 15
 
