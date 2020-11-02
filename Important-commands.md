@@ -11,6 +11,8 @@
 - ``scp /localPath/file.txt user@hostname:/remotePath/file.txt``: Copy file from local host to ssh server
 - ``ssh user@hostname <command>``: Runs command over ssh
 
+- See crypt folder!
+
 ## Docker
 
 - ``docker build -t <image_tag>:latest .``: Build local Dockerfile to image with custom tag
