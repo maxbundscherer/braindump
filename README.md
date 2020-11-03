@@ -15,6 +15,10 @@
 
 - [See crypt folder](cryptGPG)
 
+## rSync copy script
+
+- [click](scripts/rSync.sh)
+
 ## Docker
 
 - ``docker build -t <image_tag>:latest .``: Build local Dockerfile to image with custom tag
