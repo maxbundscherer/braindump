@@ -11,12 +11,14 @@
 - ``scp /localPath/file.txt user@hostname:/remotePath/file.txt``: Copy file from local host to ssh server
 - ``ssh user@hostname <command>``: Runs command over ssh
 
-- See crypt folder!
+## GPG (GNU Privacy Guard) Scripts
+
+- [See crypt folder](cryptGPG)
 
 ## Docker
 
 - ``docker build -t <image_tag>:latest .``: Build local Dockerfile to image with custom tag
-- ``docker run --rm --name <container_name> <image_tag>``: Run container with custom name from image and remove it after termination
+- ``docker run --rm -d --name <container_name> <image_tag>``: Run container dispatched with custom name from image and remove it after termination
 
 ## SSH set passphrase
 
@@ -35,7 +37,7 @@
 - ``mount | grep mnt``: Check already mounted
 - ``sudo lsblk``: Get disks for mount
 - ``sudo mount /dev/sdd2 /mnt/mountExt``: Mount (create dir before)
-- ``sudo umount /dev/sdd2``: tbd
+- ``sudo umount /dev/sdd2``: Unmount
 
 ## Do for each file in dir
 
