@@ -19,6 +19,13 @@
 
 - [click](scripts/rSync.sh)
 
+## Zip
+
+- ``tar xfv archiv.tar``: Extract tar
+- ``tar cfv archiv.tar file1 file2``: Create tar
+- ``zip -r archiv.zip dir1 dir2``: Zip
+- ``unzip archiv.zip``: Unzip zip
+
 ## Docker
 
 - ``docker build -t <image_tag>:latest .``: Build local Dockerfile to image with custom tag
