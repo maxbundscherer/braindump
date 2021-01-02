@@ -19,3 +19,12 @@ ExecStart=/sbin/ethtool -s eth0 wol g
 
 [Install]
 WantedBy=basic.target
+
+- 
+danach
+
+sudo systemctl enable wol.service 
+
+und
+
+sudo systemctl daemon-reload 
