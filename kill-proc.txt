@@ -1,0 +1,4 @@
+for proc in $(ps aux | grep ssh | grep bundsch | awk '{print $2}'); do echo $proc; done
+
+pkill -9 -u bundschererma
+
