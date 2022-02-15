@@ -14,4 +14,12 @@
 sudo apt get install gnuradio
 sudo apt-get install gr-osmosdr
 
+
+#- Install gnuradio from source
+#- Download boost for raspberry if you cant install gnuradio from source
+#	tar xvfo boost_tbd.tar.bz2
+#	cd boot_tbd
+#	./bootstrap
+#	sudo ./b2 install
+
 (no qt interface required)
