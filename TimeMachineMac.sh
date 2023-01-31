@@ -1,14 +1,15 @@
 echo "Sudo Before!"
 
 tmutil listbackups | while read line; do
-    if [[ $line == *"2021"* ]]; then
+    if [[ $line == *"2022"* ]]; then
 
-        firstString=$line
-        secondString=""
-        fileString="${firstString/.backup/$secondString}"
+        echo
+        echo "Remove String '$line'"
 
-        echo "\n\nRemove '$fileString'"
+        # firstString=$line
+        # secondString=""
+        # fileString="${firstString/.backup/$secondString}"
 
-        tmutil delete -p "/Volumes/Time Machine-Backups/Backups.backupdb/Maximilians MacBook Pro/$fileString"
+        tmutil delete -p "$line"
     fi
 done
